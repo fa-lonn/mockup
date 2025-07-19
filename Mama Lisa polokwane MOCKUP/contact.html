@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Get in touch with Mama Lisa – bookings, inquiries, directions, social media, and virtual tour." />
+  <meta name="keywords" content="Mama Lisa, Polokwane, contact, address, phone, email, social media, virtual tour" />
+  <meta name="author" content="Mama Lisa Polokwane" />
+
+  <title>Contact - Mama Lisa Polokwane</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    html, body {
+      background-color: #000;
+      background-image: url('marble2.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #f5f5f5;
+      scroll-behavior: smooth;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      position: absolute;
+      left: 40px;
+    }
+
+    .logo img {
+      height: 35px;
+    }
+
+    nav {
+      position: absolute;
+      left: 52%;
+      transform: translateX(-50%);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a.active,
+    nav ul li a[aria-current="page"] {
+      color: #FFD700;
+    }
+
+    main {
+      padding-top: 120px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 40px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      color: #eee9ff;
+    }
+
+    .contact-info a {
+      color: #f0f0aa;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #FFD700;
+    }
+
+    .book-btn {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .book-btn a {
+      display: inline-block;
+      padding: 14px 30px;
+      border: 2px solid #f0f0aa;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #f0f0aa;
+      background-color: transparent;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .book-btn a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(270deg, #f0f0aa, #c7c77f, #f0f0aa);
+      background-size: 200% 200%;
+      z-index: -1;
+      transition: transform 0.5s ease;
+      transform: translateX(-100%);
+    }
+
+    .book-btn a:hover::before {
+      transform: translateX(0);
+      animation: slideGradient 2s linear infinite;
+    }
+
+    .book-btn a:hover {
+      color: #000;
+    }
+
+    .map {
+      margin-bottom: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid #444;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .social-links a {
+      color: #f5f5f5;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #FFD700;
+    }
+
+    .virtual-tour {
+      margin-bottom: 60px;
+    }
+
+    .virtual-tour h2 {
+      font-size: 2rem;
+      color: #FFD700;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .virtual-tour iframe {
+      width: 100%;
+      height: 400px;
+      border: 2px solid #444;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #888;
+    }
+
+    @keyframes slideGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        left: 58%;
+      }
+
+      nav ul {
+        gap: 25px;
+      }
+
+      nav ul li a {
+        font-size: 0.92rem;
+      }
+
+      .logo {
+        left: 20px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .virtual-tour iframe {
+        height: 300px;
+      }
+
+      main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        left: 60%;
+      }
+
+      nav ul {
+        gap: 18px;
+      }
+
+      nav ul li a {
+        font-size: 0.76rem;
+        padding-bottom: 2px;
+      }
+
+      .logo {
+        left: 20px;
+      }
+
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="logo.png" alt="Mama Lisa Logo" /></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact Us</h1>
+
+    <div class="contact-info">
+      <p><strong>Address:</strong> 48 Schoeman Street, Polokwane, South Africa</p>
+      <p><strong>Phone / Bookings:</strong> <a href="tel:+27661687510">066 168 7510</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/mamalisaplk" target="_blank">@mamalisaplk</a></p>
+      <p><strong>Facebook:</strong> <a href="https://facebook.com/MamaLisa-Polokwane-61569563216362" target="_blank">Mama Lisa Polokwane</a></p>
+    </div>
+
+    <div class="book-btn">
+      <a href="book.html">Book a Table</a>
+    </div>
+
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?q=48%20Schoeman%20Street%2C%20Polokwane&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <div class="social-links">
+      <a href="https://instagram.com/mamalisaplk" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://facebook.com/MamaLisa-Polokwane-61569563216362" target="_blank" aria-label="Facebook">Facebook</a>
+    </div>
+
+    <div class="virtual-tour">
+      <h2>Virtual Tour</h2>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Mama Lisa Polokwane. All rights reserved.
+  </footer>
+</body>
+
+</html>

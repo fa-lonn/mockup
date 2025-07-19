@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View the delicious Mama Lisa menu – starters, mains, drinks, and more." />
+  <meta name="keywords" content="Mama Lisa, Polokwane, menu, food, drinks, dishes, meals" />
+  <meta name="author" content="Mama Lisa Polokwane" />
+
+  <title>Menu - Mama Lisa Polokwane</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    html, body {
+      background: #000 url('kitchen2.png') center/cover fixed;
+      color: #f5f5f5; scroll-behavior: smooth;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.75); z-index: -1;
+    }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 80px; background: rgba(0, 0, 0, 0.7);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+    }
+
+    .logo { position: absolute; left: 40px; }
+    .logo img { height: 35px; }
+
+    nav {
+      position: absolute;
+      left: 52%;
+      transform: translateX(-50%);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a.active,
+    nav ul li a[aria-current="page"] {
+      color: #FFD700;
+    }
+
+    main {
+      padding-top: 120px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-bottom: 80px;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    h1 {
+      font-size: 3rem; text-align: center;
+      color: #FFD700; margin-bottom: 30px;
+    }
+
+    .action-buttons {
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 20px; margin-bottom: 40px;
+    }
+
+    .action-buttons a {
+      position: relative; color: #f0f0aa;
+      text-decoration: none; border: 2px solid #f0f0aa;
+      padding: 12px 24px; border-radius: 6px;
+      font-weight: 600; background: transparent;
+      overflow: hidden; z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .action-buttons a::before {
+      content: ""; position: absolute;
+      top: 0; left: -100%;
+      width: 200%; height: 100%;
+      background: linear-gradient(270deg, #f0f0aa, #c7c77f, #f0f0aa);
+      background-size: 200% 200%; z-index: -1;
+      transition: transform 0.5s ease;
+      transform: translateX(-100%);
+    }
+
+    .action-buttons a:hover::before {
+      transform: translateX(0);
+      animation: slideGradient 2s linear infinite;
+    }
+
+    .action-buttons a:hover { color: #000; }
+
+    @keyframes slideGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .menu-section { margin-bottom: 50px; }
+    .menu-section h2 {
+      font-size: 2rem; color: #f0f0aa;
+      border-bottom: 2px solid #444;
+      padding-bottom: 10px; margin-bottom: 20px;
+    }
+
+    .menu-item {
+      display: flex; justify-content: space-between;
+      border-bottom: 1px dashed #555;
+      padding: 12px 0; position: relative;
+    }
+
+    .menu-item .name {
+      font-weight: 600; color: #fff;
+    }
+
+    .menu-item .price {
+      color: #FFD700; font-weight: 500;
+    }
+
+    .tag {
+      background: #FFD700; color: #000;
+      font-size: 0.75rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 4px;
+      margin-left: 10px;
+    }
+
+    .more-items {
+      display: none; opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .more-items.show {
+      display: block; opacity: 1;
+      transform: translateY(0);
+    }
+
+    .show-more-btn {
+      margin-top: 15px; text-align: center;
+    }
+
+    .show-more-btn button {
+      background: none; border: 2px solid #FFD700;
+      color: #FFD700; font-weight: bold;
+      padding: 8px 18px; border-radius: 6px;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+
+    .show-more-btn button:hover {
+      background: #FFD700; color: #000;
+    }
+
+    footer {
+      text-align: center; padding: 30px;
+      background: rgba(0, 0, 0, 0.8); color: #888;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        left: 58%;
+      }
+
+      nav ul {
+        gap: 25px;
+      }
+
+      nav ul li a {
+        font-size: 0.92rem;
+      }
+
+      .logo {
+        left: 20px;
+      }
+
+      h1 { font-size: 2.2rem; }
+      .menu-section h2 { font-size: 1.5rem; }
+
+      .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu-item .price { margin-top: 5px; }
+
+      main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        left: 60%;
+      }
+
+      nav ul {
+        gap: 18px;
+      }
+
+      nav ul li a {
+        font-size: 0.76rem;
+        padding-bottom: 2px;
+      }
+
+      .logo {
+        left: 20px;
+      }
+
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="logo.png" alt="Mama Lisa Logo" /></a>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="menu.html" class="nav-link active" aria-current="page">Menu</a></li>
+        <li><a href="events.html" class="nav-link">Events</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Our Menu</h1>
+
+    <div class="action-buttons">
+      <a href="MamaLisaMenu.pdf" download>Download Full Menu (PDF)</a>
+      <a href="https://www.mrd.com/delivery/restaurant/mama-lisa-witbank-modelpark/27279" target="_blank">Order on Mr D</a>
+    </div>
+
+    <section class="menu-section">
+      <h2>Starters</h2>
+      <div class="menu-item">
+        <p class="name">Grilled Halloumi Bites <span class="tag">Most Popular</span></p>
+        <p class="price">R75</p>
+      </div>
+      <div class="menu-item">
+        <p class="name">Spicy Chicken Wings</p>
+        <p class="price">R85</p>
+      </div>
+      <div class="more-items">
+        <div class="menu-item">
+          <p class="name">Garlic Bread</p>
+          <p class="price">R45</p>
+        </div>
+        <div class="menu-item">
+          <p class="name">Mozzarella Sticks</p>
+          <p class="price">R70</p>
+        </div>
+      </div>
+      <div class="show-more-btn">
+        <button onclick="toggleMore(this)">Show More</button>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Main Courses</h2>
+      <div class="menu-item">
+        <p class="name">Mama’s Flame-Grilled Ribs <span class="tag">Most Popular</span></p>
+        <p class="price">R190</p>
+      </div>
+      <div class="menu-item">
+        <p class="name">Beef Burger & Chips</p>
+        <p class="price">R120</p>
+      </div>
+      <div class="more-items">
+        <div class="menu-item">
+          <p class="name">Grilled Chicken Wrap</p>
+          <p class="price">R110</p>
+        </div>
+        <div class="menu-item">
+          <p class="name">Seafood Pasta</p>
+          <p class="price">R150</p>
+        </div>
+      </div>
+      <div class="show-more-btn">
+        <button onclick="toggleMore(this)">Show More</button>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Drinks</h2>
+      <div class="menu-item">
+        <p class="name">Mama’s Signature Cocktail <span class="tag">Most Popular</span></p>
+        <p class="price">R95</p>
+      </div>
+      <div class="menu-item">
+        <p class="name">Local Beer (750ml)</p>
+        <p class="price">R45</p>
+      </div>
+      <div class="more-items">
+        <div class="menu-item">
+          <p class="name">Iced Coffee</p>
+          <p class="price">R40</p>
+        </div>
+        <div class="menu-item">
+          <p class="name">Soft Drinks</p>
+          <p class="price">R30</p>
+        </div>
+      </div>
+      <div class="show-more-btn">
+        <button onclick="toggleMore(this)">Show More</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Mama Lisa Polokwane. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMore(btn) {
+      const section = btn.closest('.menu-section');
+      const more = section.querySelector('.more-items');
+      more.classList.toggle('show');
+      btn.textContent = more.classList.contains('show') ? 'Show Less' : 'Show More';
+    }
+  </script>
+</body>
+</html>
